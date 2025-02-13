@@ -1,5 +1,6 @@
 require 'discordrb'
 require 'dotenv/load'
+require_relative 'lib/commands'
 
 TOKEN = ENV['DISCORD_BOT_TOKEN']
 CLIENT_ID = ENV['DISCORD_CLIENT_ID']
@@ -9,24 +10,8 @@ bot = Discordrb::Commands::CommandBot.new(
   prefix: '!',
 )
 
-bot.command :help do |event|
-  event.respond "**!help** - this cruft\n" \
-                "**!ping** - you get ponged\n" \
-                "**!random** *[min]* *[max]* - get a random number between min and max"
-end
+Dir["#{File.dirname(__FILE__)}/lib/commands/*.rb"].each { | file | load file }
 
-bot.command :userinfo do |event|
-  event.respond "Username: #{event.Username}\n" \
-                "#{event.userinfo}\n" \
-                "ID #{event.user.ID}\n"\
-end
-
-bot.command :ping do |event|
-  event.respond "Pong! 🏓"
-end
-
-bot.command :random do |event, min, max|
-  rand(min.to_i..max.to_i)
-end
+register_commands(bot)
 
 bot.run

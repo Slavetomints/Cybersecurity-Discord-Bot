@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'commands/avatar'
 require_relative 'commands/flip'
 require_relative 'commands/help'

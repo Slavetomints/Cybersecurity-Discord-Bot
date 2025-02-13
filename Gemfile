@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # gem "rails"
 
-gem "discordrb", "~> 3.5"
+gem 'discordrb', '~> 3.5'
 
-gem "ruby-lsp", "~> 0.23.10"
+gem 'ruby-lsp', '~> 0.23.10'
 
-gem "dotenv", "~> 3.1"
+gem 'dotenv', '~> 3.1'
+
+gem 'rubocop', '~> 1.71'

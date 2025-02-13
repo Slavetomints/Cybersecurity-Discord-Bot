@@ -1,14 +1,32 @@
-require 'discordrb/webhooks'
+require 'discordrb'
 require 'dotenv/load'
 
-WEBHOOK_URL = ENV['WEBHOOK_URL'].freeze()
+TOKEN = ENV['DISCORD_BOT_TOKEN']
+CLIENT_ID = ENV['DISCORD_CLIENT_ID']
+bot = Discordrb::Commands::CommandBot.new(
+  token: TOKEN,
+  client_id: CLIENT_ID.to_i,
+  prefix: '!',
+)
 
-client = Discordrb::Webhooks::Client.new(url: WEBHOOK_URL)
-client.execute do |builder|
-  builder.content = 'Hello world!'
-  builder.add_embed do |embed|
-    embed.title = 'Embed title'
-    embed.description = 'Embed description'
-    embed.timestamp = Time.now
-  end
+bot.command :help do |event|
+  event.respond "**!help** - this cruft\n" \
+                "**!ping** - you get ponged\n" \
+                "**!random** *[min]* *[max]* - get a random number between min and max"
 end
+
+bot.command :userinfo do |event|
+  event.respond "Username: #{event.Username}\n" \
+                "#{event.userinfo}\n" \
+                "ID #{event.user.ID}\n"\
+end
+
+bot.command :ping do |event|
+  event.respond "Pong! 🏓"
+end
+
+bot.command :random do |event, min, max|
+  rand(min.to_i..max.to_i)
+end
+
+bot.run

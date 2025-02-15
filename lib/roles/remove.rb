@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-def register_remove_role(bot)
+def remove_role(user, server, role_id)
+  role = server.roles.find { |r| r.id == role_id.to_i }
+  if role
+    user.remove_role(role)
+    puts "Removed role #{role.name} from #{user.name}"
+  else
+    puts 'Role not found!'
+  end
+end
+
+def register_remove_role(bot, role_id, role_message_id, emoji)
   bot.reaction_remove do |event|
-    role_id = 1_339_633_352_440_938_618
-    user = event.user
-    server = event.server
+    next unless valid_reaction?(event, role_message_id, emoji)
 
-    next if user.bot?
-
-    role = server.roles.find { |r| r.id == role_id }
-    if role
-      event.user.remove_role(role)
-      puts "Removed role #{role.name} from #{user.name}"
-    else
-      puts 'Role not found!'
-    end
+    remove_role(event.user, event.server, role_id)
   end
 end

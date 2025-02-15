@@ -9,6 +9,7 @@ require_relative 'commands/roll'
 require_relative 'commands/say'
 require_relative 'commands/serverinfo'
 require_relative 'commands/userinfo'
+require_relative 'roles/init_roles'
 
 def register_commands(bot)
   register_avatar_command(bot)
@@ -20,4 +21,5 @@ def register_commands(bot)
   register_say_command(bot)
   register_serverinfo_command(bot)
   register_userinfo_command(bot)
+  init_roles(bot)
 end

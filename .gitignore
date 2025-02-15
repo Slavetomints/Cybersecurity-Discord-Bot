@@ -1,2 +1,4 @@
-.env
+config/*
 .vscode
+role_message_id.json
+database/*

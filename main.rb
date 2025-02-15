@@ -2,7 +2,7 @@
 
 require 'discordrb'
 require 'dotenv/load'
-require_relative 'lib/commands'
+require_relative 'lib/init_bot_capabilities'
 
 TOKEN = ENV['DISCORD_BOT_TOKEN']
 CLIENT_ID = ENV['DISCORD_CLIENT_ID']

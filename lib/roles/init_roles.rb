@@ -3,7 +3,9 @@
 require_relative 'add'
 require_relative 'remove'
 require 'json'
-require 'dotenv/load'
+require 'dotenv'
+
+Dotenv.load('config/.env')
 
 ANNOUNCEMENTS_ROLE_ID = ENV['ANNOUNCEMENTS_ROLE_ID'] # Test role ID
 CHANNEL_ID = ENV['ROLES_CHANNEL_ID'] # #roles channel ID

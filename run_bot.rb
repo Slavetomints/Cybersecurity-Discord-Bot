@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require 'discordrb'
-require 'dotenv/load'
+require 'dotenv'
 require_relative 'lib/init_bot_capabilities'
+
+Dotenv.load('config/.env')
 
 TOKEN = ENV['DISCORD_BOT_TOKEN']
 CLIENT_ID = ENV['DISCORD_CLIENT_ID']

@@ -1,4 +1,4 @@
-config/*
+config/.env
 .vscode
 role_message_id.json
 database/*

@@ -11,3 +11,5 @@ gem 'ruby-lsp', '~> 0.23.10'
 gem 'dotenv', '~> 3.1'
 
 gem 'rubocop', '~> 1.71'
+
+gem 'rspec', '~> 3.13'

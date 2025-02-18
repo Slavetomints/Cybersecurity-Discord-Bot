@@ -2,19 +2,22 @@
 
 require 'discordrb'
 require 'dotenv'
+
 require_relative 'lib/init_bot_capabilities'
 
-Dotenv.load('config/.env')
+module CyberSecBot
+  Dotenv.load('config/.env')
 
-TOKEN = ENV['DISCORD_BOT_TOKEN']
-CLIENT_ID = ENV['DISCORD_CLIENT_ID']
+  TOKEN = ENV['DISCORD_BOT_TOKEN']
+  CLIENT_ID = ENV['DISCORD_CLIENT_ID']
 
-bot = Discordrb::Commands::CommandBot.new(
-  token: TOKEN,
-  client_id: CLIENT_ID.to_i,
-  prefix: '!'
-)
+  bot = Discordrb::Commands::CommandBot.new(
+    token: TOKEN,
+    client_id: CLIENT_ID.to_i,
+    prefix: '!'
+  )
 
-register_commands(bot)
+  CyberSecBot.register_commands(bot)
 
-bot.run
+  bot.run
+end

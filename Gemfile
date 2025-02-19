@@ -13,3 +13,7 @@ gem 'dotenv', '~> 3.1'
 gem 'rubocop', '~> 1.71'
 
 gem 'rspec', '~> 3.13'
+
+gem 'rubocop-rspec', '~> 3.4'
+
+gem 'nokogiri', '~> 1.18'

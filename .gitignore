@@ -1,5 +1,12 @@
-config/.env
-.vscode
+
+# Environment variables
+.env
 role_message_id.json
-database/*
 .rspec
+
+# vscode config
+.vscode
+
+# JSON files for challenges
+database/*
+

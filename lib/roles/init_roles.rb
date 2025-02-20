@@ -10,13 +10,12 @@ module CyberSecBot
   module Roles
     Dotenv.load('config/.env')
 
-    ANNOUNCEMENTS_ROLE_ID = ENV['ANNOUNCEMENTS_ROLE_ID'] # Test role ID
-    CHANNEL_ID = ENV['ROLES_CHANNEL_ID'] # #roles channel ID
-    ANNOUNCEMENTS_ROLE_EMOJI = ENV['ANNOUNCEMENTS_ROLE_EMOJI'] # Green circle emoji
-    DAILY_CHALLENGES_ROLE_EMOJI = ENV['DAILY_CHALLENGES_ROLE_EMOJI']
-    DAILY_CHALLENGES_ROLE_ID = ENV['DAILY_CHALLENGES_ROLE_ID']
-    ROLE_MESSAGE_FILE = 'role_message_id.json' # File to store the message ID
-
+    ANNOUNCEMENTS_ROLE_ID = ENV.fetch('ANNOUNCEMENTS_ROLE_ID', nil)
+    CHANNEL_ID = ENV.fetch('ROLES_CHANNEL_ID', nil)
+    ANNOUNCEMENTS_ROLE_EMOJI = ENV.fetch('ANNOUNCEMENTS_ROLE_EMOJI', nil)
+    DAILY_CHALLENGES_ROLE_EMOJI = ENV.fetch('DAILY_CHALLENGES_ROLE_EMOJI', nil)
+    DAILY_CHALLENGES_ROLE_ID = ENV.fetch('DAILY_CHALLENGES_ROLE_ID', nil)
+    ROLE_MESSAGE_FILE = 'config/role_message_id.json'
     # Retrieves the saved role message ID from a file
     def self.load_message_id
       return nil unless File.exist?(ROLE_MESSAGE_FILE)
@@ -32,7 +31,7 @@ module CyberSecBot
     end
 
     # Sends a new role selection message and stores the message ID, if needed
-    def self.send_role_message(channel, message_id = nil) # rubocop:disable Metrics/MethodLength
+    def self.send_role_message(channel, message_id = nil)
       if message_id
         puts 'Using existing message ID'
         channel.message(message_id)

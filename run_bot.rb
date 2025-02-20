@@ -8,8 +8,8 @@ require_relative 'lib/init_bot_capabilities'
 module CyberSecBot
   Dotenv.load('config/.env')
 
-  TOKEN = ENV['DISCORD_BOT_TOKEN']
-  CLIENT_ID = ENV['DISCORD_CLIENT_ID']
+  TOKEN = ENV.fetch('DISCORD_BOT_TOKEN', nil)
+  CLIENT_ID = ENV.fetch('DISCORD_CLIENT_ID', nil)
 
   bot = Discordrb::Commands::CommandBot.new(
     token: TOKEN,

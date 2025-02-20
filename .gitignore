@@ -3,6 +3,7 @@
 .env
 role_message_id.json
 .rspec
+.rubocop.yml
 
 # vscode config
 .vscode

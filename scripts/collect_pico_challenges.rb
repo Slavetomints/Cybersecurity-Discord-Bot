@@ -153,9 +153,9 @@ module CyberSecBot
     def self.collect_pico_challenges
       Dotenv.load('../config/.env')
 
-      csrf_token = ENV['CSRF_TOKEN']
-      session_id = ENV['SESSION_ID']
-      cf_clearance = ENV['CF_CLEARANCE']
+      csrf_token = ENV.fetch('CSRF_TOKEN', nil)
+      session_id = ENV.fetch('SESSION_ID', nil)
+      cf_clearance = ENV.fetch('CF_CLEARANCE', nil)
       challenge_files = []
       FileUtils.touch('master_challenges.json')
       # Fetch and clean challenge pages

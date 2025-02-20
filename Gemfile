@@ -17,3 +17,5 @@ gem 'rspec', '~> 3.13'
 gem 'rubocop-rspec', '~> 3.4'
 
 gem 'nokogiri', '~> 1.18'
+
+gem 'watir', '~> 7.3'
